@@ -37,21 +37,29 @@ Adding a new card union (UnionPay, RuPay, etc.) requires **zero changes** to thi
 markdown
 ## 📦 How to use the Maven ZIP
 1. Download `creditcard-input-maven.zip` from the Releases tab.
-2. Unzip it to a folder (e.g., `rootDirectory/creditcardedit/build/repo`).
-3. In your `settings.gradle.kts`,  add: maven { url = uri("path/to/unzipped/repo") }
-Example: 
-   `repositories {
-       google()
-       mavenCentral()
-       maven { url = uri("${layout.rootDirectory}/creditcardedit/build/repo") }
-   }`
-Add the **Maven** repository to your `settings.gradle.kts`:
+2. Unzip it to a folder (e.g.,
+
+    `rootDirectory/creditcardedit/build/repo`
+
+   3. In your `settings.gradle.kts`,  
+
+    add: maven { url = uri("path/to/unzipped/repo") }
+    Example:   
+   repositories {
+
+          google()  
+          mavenCentral() 
+          maven { url = uri("${layout.rootDirectory}/creditcardedit/build/repo") }
+   }
+
 
 ### 1. Installation
 
 ### 3. Add Dependency
 Add this to your module-level `build.gradle.kts`:
-`dependencies {
+
+dependencies {
+
     implementation("io.github.sujayabraham:creditcard-input:1.0.0")
-}`
+}
 
