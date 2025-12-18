@@ -35,8 +35,15 @@ This library is designed for **Zero-Change Maintenance**. Unlike traditional lib
 Adding a new card union (UnionPay, RuPay, etc.) requires **zero changes** to this library. All patterns and logos are configurable from the client app.
 
 ## 🛠 Usage & Configuration
+markdown
+## 📦 How to use the Maven ZIP
+1. Download `creditcard-input-maven.zip` from the Releases tab.
+2. Unzip it to a folder (e.g., `/libs/my-repo`).
+3. In your `settings.gradle.kts`, add:
+maven { url = uri("path/to/unzipped/repo") }
 
 ### 1. Installation
+ implementation("io.github.sujayabraham:creditcard-input:1.0.0")
 
 Add the **Maven** repository to your `settings.gradle.kts`:
 
