@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.creditcard.edittext.ui.theme.CreditCardEditTextTheme
+import com.creditcard.library.CardTypeConfig
 import com.creditcard.library.CreditCardInputField
 
 class MainActivity : ComponentActivity() {
@@ -36,7 +37,7 @@ class MainActivity : ComponentActivity() {
             CreditCardEditTextTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Android",
+                        name = "Card User",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -47,54 +48,85 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-    // State holds the raw 16 digits (no hyphens)
+    // State holds the raw digits
     var cardNumber by remember { mutableStateOf("") }
 
+    // Client-side Configuration: Add or update card types here without changing the library
+    val myConfigs = remember {
+        listOf(
+            CardTypeConfig(
+                name = "Visa",
+                regex = "^4[0-9]*$",
+                logoRes = com.creditcard.library.R.drawable.visa
+            ),
+            CardTypeConfig(
+                name = "MasterCard",
+                regex = "^(5[1-5]|222[1-9]|22[3-9]|2[3-6]|27[0-1]|2720)[0-9]*$",
+                logoRes = com.creditcard.library.R.drawable.mastercard
+            ),
+            CardTypeConfig(
+                name = "Amex",
+                regex = "^3[47][0-9]*$",
+                logoRes = com.creditcard.library.R.drawable.amex,
+                maxLength = 15
+            ),
+            CardTypeConfig(
+                name = "Discover",
+                regex = "^(6011|65|64[4-9]|622(12[6-9]|1[3-9][0-9]|[2-8][0-9]{2}|9[0-1][0-9]|92[0-5]))[0-9]*$",
+                logoRes = R.drawable.ic_discover // Ensure this is in app/res/drawable
+            ),
+            CardTypeConfig(
+                name = "Diners Club",
+                regex = "^(30[0-5]|36|38|39)[0-9]*$",
+                logoRes = R.drawable.ic_diners // Ensure this is in app/res/drawable
+            ),
+            /*CardTypeConfig(
+                name = "JCB",
+                regex = "^(352[8-9]|35[3-7][0-9]|358[0-9])[0-9]*$",
+                logoRes = R.drawable.ic_jcb
+            ),
+            CardTypeConfig(
+                name = "RuPay",
+                regex = "^(60|65|81|82|508)[0-9]*$",
+                logoRes = R.drawable.ic_rupay
+            ),*/
+            CardTypeConfig(
+                name = "UnionPay",
+                regex = "^62[0-9]*$",
+                logoRes = R.drawable.ic_unionpay
+            )
+        )
+    }
+
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(all = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+        Text(text = "Enter your details, $name")
+        Spacer(modifier = Modifier.height(height = 16.dp))
+
+        CreditCardInputField(
+            value = cardNumber,
+            onValueChange = { input -> cardNumber = input },
+            cardConfigs = myConfigs,
+            modifier = Modifier.fillMaxWidth(),
+            color = Color.Unspecified, // Set to Unspecified to keep original icon colors
+            label = "Enter Card Number"
+        )
+
+        Spacer(modifier = Modifier.height(height = 24.dp))
+
+        Button(
+            onClick = {
+                Log.d("CreditCardInput", "Final Card Number: $cardNumber")
+            },
+            modifier = Modifier.fillMaxWidth(fraction = 0.7f),
+            enabled = cardNumber.isNotEmpty()
         ) {
-            Text(text = "Credit Card Input")
-            Spacer(modifier = Modifier.height(height = 16.dp)) // Added height = 16.dp per your named arguments request
-
-            CreditCardInputField(
-                value = cardNumber,
-                onValueChange = { cardNumber = it },
-                modifier = Modifier.fillMaxWidth(),
-                color = Color.Red // icon tint color can be modified here
-            )
-
-            Spacer(modifier = Modifier.height(24.dp))
-
-            Button(
-                onClick = {
-                    Log.d("CreditCardInput", "Card Number: $cardNumber")
-                    // Handle click (e.g. cardNumber.length check)
-                },
-                modifier = Modifier.fillMaxWidth(0.6f)
-            ) {
-                Text("NEXT")
-            }
+            Text(text = "NEXT")
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    CreditCardEditTextTheme {
-        Greeting("Android")
     }
 }
