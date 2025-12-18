@@ -79,6 +79,7 @@ afterEvaluate {
                             developer {
                                 id.set("sujayabraham")
                                 name.set("Sujay Abraham")
+                                email.set("sujay.ka@example.com")
                             }
                         }
                     }
@@ -94,6 +95,12 @@ afterEvaluate {
         repositories {
             // For local testing before MavenCentral
             mavenLocal()
+
+            // FIXED: Added "myrepo" so the Zip task works
+            maven {
+                name = "myrepo"
+                url = uri(layout.buildDirectory.dir("repo"))
+            }
 
             // For GitHub Packages (Alternative to MavenCentral)
             maven {
