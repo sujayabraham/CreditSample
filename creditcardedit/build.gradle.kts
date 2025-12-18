@@ -60,9 +60,9 @@ afterEvaluate {
                 artifactId = "creditcard-input"
                 version = "1.0.0"
 
-                // This attaches the AAR and dependencies
-                from(components["release"])
-
+                afterEvaluate {
+                    from(components["release"])
+                }
                 // MavenCentral REQUIRES this metadata
                 pom {
                     name.set("CreditCardInputField")
@@ -106,6 +106,18 @@ afterEvaluate {
             }
         }
     }
+}
+
+tasks.register<Zip>("generateRepo") {
+    val publishTask = tasks.named(
+        "publishReleasePublicationToMyrepoRepository",
+        PublishToMavenRepository::class.java
+    )
+    // Build the repo first, then zip the folder
+    dependsOn(publishTask)
+    from(layout.buildDirectory.dir("repo"))
+    into("creditcard-library")
+    archiveFileName.set("creditcard-input-maven.zip")
 }
 
 dependencies {
