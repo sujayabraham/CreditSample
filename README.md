@@ -48,8 +48,8 @@ Add the **Maven** repository to your `settings.gradle.kts`:
 
 ### 3. Add Dependency
 Add this to your module-level `build.gradle.kts`:
-**dependencies {
+dependencies {
 
     implementation("io.github.sujayabraham:creditcard-input:1.0.0")
-}**
+}
 
