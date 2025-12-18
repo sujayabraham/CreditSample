@@ -18,7 +18,6 @@ This library is designed for **Zero-Change Maintenance**. Unlike traditional lib
 - [x] **Dynamic Validation**: Library respects `maxLength` (e.g., 15 for Amex, 16 for others) provided via config.
 - [x] **Apache 2.0 License**: Fully integrated into Maven POM metadata.
 - [x] **Zero-Change Maintenance**: Library decoupled from specific card brands.
-- [x] **Actual Group ID**: Standardized to `io.github.sujayabraham`.
 - [x] **GitHub Release**: Initial Maven ZIP uploaded to GitHub Releases.
 
 ### 🚀 Future Implementation
@@ -38,18 +37,21 @@ Adding a new card union (UnionPay, RuPay, etc.) requires **zero changes** to thi
 markdown
 ## 📦 How to use the Maven ZIP
 1. Download `creditcard-input-maven.zip` from the Releases tab.
-2. Unzip it to a folder (e.g., `/libs/my-repo`).
-3. In your `settings.gradle.kts`, add:
-maven { url = uri("path/to/unzipped/repo") }
-
+2. Unzip it to a folder (e.g., `rootDirectory/creditcardedit/build/repo`).
+3. In your `settings.gradle.kts`,  add: maven { url = uri("path/to/unzipped/repo") }
+Example: 
+   `repositories {
+       google()
+       mavenCentral()
+       maven { url = uri("${layout.rootDirectory}/creditcardedit/build/repo") }
+   }`
 Add the **Maven** repository to your `settings.gradle.kts`:
 
 ### 1. Installation
 
 ### 3. Add Dependency
 Add this to your module-level `build.gradle.kts`:
-dependencies {
-
+`dependencies {
     implementation("io.github.sujayabraham:creditcard-input:1.0.0")
-}
+}`
 

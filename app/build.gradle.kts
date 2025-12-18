@@ -45,7 +45,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":creditcardedit"))
+    //implementation(project(":creditcardedit"))
+    implementation("io.github.sujayabraham:creditcard-input:1.0.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
