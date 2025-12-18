@@ -1,19 +1,3 @@
-## 📄 License
-
-Copyright 2024 Sujay Abraham
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
 # 💳 CreditCardInputField (Jetpack Compose)
 
 A highly flexible, Material 3-ready Jetpack Compose library for smart credit card inputs.
@@ -32,6 +16,10 @@ This library is designed for **Zero-Change Maintenance**. Unlike traditional lib
 - [x] **Configurable Parameters**: Added `cardConfigs: List<CardTypeConfig>` to the primary component.
 - [x] **Named Arguments**: API enforces clean, readable code using explicit parameter names.
 - [x] **Dynamic Validation**: Library respects `maxLength` (e.g., 15 for Amex, 16 for others) provided via config.
+- [x] **Apache 2.0 License**: Fully integrated into Maven POM metadata.
+- [x] **Zero-Change Maintenance**: Library decoupled from specific card brands.
+- [x] **Actual Group ID**: Standardized to `io.github.sujayabraham`.
+- [x] **GitHub Release**: Initial Maven ZIP uploaded to GitHub Releases.
 
 ### 🚀 Future Implementation
 - [ ] **Accessibility (A11y)**: Sync `activeConfig.name` with `contentDescription` for screen readers.
