@@ -1,16 +1,38 @@
-# CreditCardInputField - Compose Library
+# 💳 CreditCardInputField (Jetpack Compose)
 
-A customizable, Material 3-ready Jetpack Compose component for credit card input with automatic formatting, card type detection, and validation constraints.
+A highly flexible, Material 3-ready Jetpack Compose library for smart credit card inputs.
 
-## 🚀 Features
-- **Auto-Formatting**: Automatically adds separators (e.g., `-`) while typing.
-- **Card Detection**: Real-time detection of Visa, MasterCard, and Amex.
-- **Dynamic Length**: Enforces 15-digit limit for Amex and 16-digit for others.
-- **Named Arguments**: Clean API following modern Kotlin standards.
+## 🌟 Key Advantage: Logic-Agnostic Architecture
+This library is designed for **Zero-Change Maintenance**. Unlike traditional libraries that hardcode card brands, this library allows the client-side (Sample App) to inject Regex patterns and Logos.
+
+**Adding a new card union (like UnionPay, JCB, or RuPay) requires ZERO changes to the library project.**
 
 ---
 
-## 🛠 Usage
+## 🛠 Project TODO & Roadmap
 
-To use this library directly from GitHub via JitPack, add this to your `build.gradle.kts`:
+### ✅ Completed
+- [x] **Inversion of Control**: Logic (Regex) and assets (Logos) are passed from the client app.
+- [x] **Configurable Parameters**: Added `cardConfigs: List<CardTypeConfig>` to the primary component.
+- [x] **Named Arguments**: API enforces clean, readable code using explicit parameter names.
+- [x] **Dynamic Validation**: Library respects `maxLength` (e.g., 15 for Amex, 16 for others) provided via config.
+
+### 🚀 Future Implementation
+- [ ] **Accessibility (A11y)**: Sync `activeConfig.name` with `contentDescription` for screen readers.
+- [ ] **Luhn Algorithm**: Add optional `verifyChecksum: Boolean` for mathematical validation.
+- [ ] **Error UI**: Implement `isError` parameter for Material 3 error states (red borders).
+- [ ] **Unit Testing**: Test `CreditCardVisualTransformation` for various grouping patterns.
+
+### 📦 Client-Side Tasks (Sample App)
+- [ ] Add SVG/Vector assets for Discover, Diners Club, JCB, and RuPay to `app/src/main/res/drawable`.
+- [ ] Uncomment JCB and RuPay configurations in `MainActivity.kt`.
+
+## 🚀 Optimized Maintenance
+Adding a new card union (UnionPay, RuPay, etc.) requires **zero changes** to this library. All patterns and logos are configurable from the client app.
+
+## 🛠 Usage & Configuration
+
+### 1. Installation
+
+Add the **Maven** repository to your `settings.gradle.kts`:
 
