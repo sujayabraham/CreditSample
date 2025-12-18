@@ -1,25 +1,12 @@
 package com.creditcard.library
 
 
-import kotlin.text.indices
-import kotlin.text.toRegex
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.*import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.OffsetMapping
 import androidx.compose.ui.text.input.TransformedText
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.unit.dp
 
-/**
- * VisualTransformation that adds the separator (e.g., '-') every 4 digits.
- * This replaces the addSeparatorToText logic from the Java version.
- */
+
 class CreditCardVisualTransformation(val separator: Char = '-') : VisualTransformation {
     override fun filter(text: AnnotatedString): TransformedText {
         val out = StringBuilder()
