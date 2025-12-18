@@ -42,8 +42,14 @@ markdown
 3. In your `settings.gradle.kts`, add:
 maven { url = uri("path/to/unzipped/repo") }
 
-### 1. Installation
- implementation("io.github.sujayabraham:creditcard-input:1.0.0")
-
 Add the **Maven** repository to your `settings.gradle.kts`:
+
+### 1. Installation
+
+### 3. Add Dependency
+Add this to your module-level `build.gradle.kts`:
+**dependencies {
+
+    implementation("io.github.sujayabraham:creditcard-input:1.0.0")
+}**
 
