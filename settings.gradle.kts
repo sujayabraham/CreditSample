@@ -16,7 +16,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url = uri("path/to/unzipped/folder") }
+        maven { url = uri("${layout.rootDirectory}/creditcardedit/build/repo") }
     }
 }
 

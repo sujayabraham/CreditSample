@@ -1,16 +1,18 @@
+gitignore
+# IDE / Editor
+.idea/
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.idea
+*.iws
+*.ipr
 .DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+
+# Android / Gradle
+.gradle/
+build/
 local.properties
+captures/
+.externalNativeBuild
+.cxx/
+
+# Distribution Zips (If you want to keep them out of Git)
+*.zip
