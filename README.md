@@ -8,7 +8,7 @@ This library is designed for **Zero-Change Maintenance**. Unlike traditional lib
 **Adding a new card union (like UnionPay, JCB, or RuPay) requires ZERO changes to the library project.**
 
 ---
-https://github.com/sujayabraham/CreditSample/blob/main/screen_shot.png
+![Alt text for the image](https://github.com/sujayabraham/CreditSample/blob/main/screen_shot.png)
 
 ## 🛠 Project TODO & Roadmap
 
