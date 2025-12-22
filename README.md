@@ -52,7 +52,8 @@ markdown
           maven { url = uri("${layout.rootDirectory}/creditcardedit/build/repo") }
    }
 
-
+3. Alternatively you can keep this in amazone or any hosting server and use that URL while building for production.
+   
 ### 1. Installation
 
 ### 3. Add Dependency
